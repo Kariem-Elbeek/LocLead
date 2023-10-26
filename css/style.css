@@ -28,7 +28,7 @@ img{
 
 /* home */
 
-.home {
+#home {
 height: 100vh;
 background-color: aqua;
 }
@@ -48,8 +48,4 @@ background-color: aqua;
 .content p{
     text-align: justify;
 }
-
-/* .ueber-uns .left{
-    transform: translateX(-120%);
-} */
 
