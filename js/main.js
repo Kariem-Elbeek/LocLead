@@ -5,12 +5,12 @@ $(window).scroll(function(){
     let homeHeight = $('#home').height();
     if (windowHeight > homeHeight){
         $('#navbar').addClass('bg-light');
-        $('#navbar').removeClass('bg-white');
+        $('#navbar').removeClass('bg-transparent');
         console.log('done')
     }
     else{
         $('#navbar').addClass('bg-transparent');
-        $('#navbar').removeClass('bg-white'); 
+        $('#navbar').removeClass('bg-light'); 
     }
 });
 
