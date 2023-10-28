@@ -6,7 +6,6 @@ $(window).scroll(function(){
     if (windowHeight > homeHeight){
         $('#navbar').addClass('bg-light');
         $('#navbar').removeClass('bg-transparent');
-        console.log('done')
     }
     else{
         $('#navbar').addClass('bg-transparent');
