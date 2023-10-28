@@ -1,7 +1,7 @@
 /* common attributes */
 
 *{
-    transition: all .3s;
+    transition: all 1.5s linear;
 }
 /* body{
     font-family: 'Open Sans', sans-serif;
@@ -48,4 +48,6 @@ background-color: aqua;
 .content p{
     text-align: justify;
 }
+
+/* dienstleistungen */
 
