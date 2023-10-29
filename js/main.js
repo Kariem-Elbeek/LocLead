@@ -6,6 +6,7 @@ let dienstleistungenTop = $('#dienstleistungen').offset().top;
 let referenzenTop = $('#referenzen').offset().top;
 
 
+
 // navbar
 
 $(window).scroll(function(){
@@ -18,6 +19,12 @@ $(window).scroll(function(){
         $('#navbar').addClass('bg-transparent');
         $('#navbar').removeClass('bg-light'); 
     }
+});
+
+$('.nav-link').click(function () { 
+    let navId = $(this).attr('nav-id');
+    let goTop = $(navId).offset().top;
+    window.scrollTo(0, goTop - navbarHeight);
 });
 
 
