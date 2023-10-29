@@ -1,8 +1,8 @@
 /* common attributes */
 
-*{
+/* *{
     transition: all 1.5s linear;
-}
+} */
 /* body{
     font-family: 'Open Sans', sans-serif;
     font-family: 'Poppins', sans-serif;
@@ -16,8 +16,41 @@ img{
     --myred-layer: rgba(242, 84, 84, .85);
 }
 
+/* section heading */
+
+.section-heading h2{
+    position: relative;
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.section-heading h2::before{
+    content: attr(bg-title-letter);
+    position: absolute;
+    font-size: 2em;
+    font-weight: 900;
+    opacity: .06;
+    bottom: -.25em;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.section-heading hr{
+    width: 40px;
+    transition: all .3s;
+    margin: auto;
+    opacity: 1;
+    height: .5px;
+}
+.section-heading:hover hr{
+    width: 80px;
+}
+
 /* navbar */
 
+#navbar {
+    transition: all 1s;
+}
 .navbar-brand img {
     width: 80px;
 }
@@ -34,8 +67,6 @@ background-color: aqua;
 }
 .carousel-caption{
     bottom: 5rem;
-    /* color: black;
-    background-color: rgba(0, 0, 0, .25); */
 }
 
 .carousel-caption h1{
@@ -51,3 +82,22 @@ background-color: aqua;
 
 /* dienstleistungen */
 
+/* kontank */
+
+.angebot-form h3{
+    font-size: 32px;
+    font-weight: 700;
+}
+.angebot-form button{
+    background-color: var(--myred);
+}
+.btn-send:hover{
+    opacity: 0.7;
+}
+.kontakt-line:hover h5{
+    color: var(--myred);
+}
+
+.kontakt-line i{
+    color: var(--myred);
+}

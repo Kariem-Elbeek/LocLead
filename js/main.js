@@ -3,13 +3,14 @@ let navbarHeight = $('#navbar').height();
 let homeHeight = $('#home').height();
 let ueberUnsTop = $('#ueber-uns').offset().top;
 let dienstleistungenTop = $('#dienstleistungen').offset().top;
+let referenzenTop = $('#referenzen').offset().top;
 
 
 // navbar
 
 $(window).scroll(function(){
     let windowHeight = $(window).scrollTop();
-    if (windowHeight > homeHeight){
+    if (windowHeight > homeHeight - navbarHeight){
         $('#navbar').addClass('bg-light');
         $('#navbar').removeClass('bg-transparent');
     }
@@ -22,26 +23,47 @@ $(window).scroll(function(){
 
 // section ueber-uns
 
-$('#ueber-uns .content-left').css('transform', 'translateX(-120%)');
-$('#ueber-uns .content-right').css('transform', 'translateX(120%)');
+$('#ueber-uns .content-left').css({'transform': 'translateX(-120%)', 'transition': 'all 1.5s linear'});
+$('#ueber-uns .content-right').css({'transform': 'translateX(120%)', 'transition': 'all 1.5s linear'});
 
 $(window).scroll(function () { 
     let windowHeight = $(window).scrollTop() + navbarHeight;
-    if (windowHeight > ueberUnsTop * .5) {
+    let ueberUnsHeight = $('#ueber-uns').height();
+    if (windowHeight > ueberUnsTop - (ueberUnsHeight * .5)) {
         $('#ueber-uns .content-left').css('transform', 'translateX(0%)');
         $('#ueber-uns .content-right').css('transform', 'translateX(0%)');
     }
 });
 
-// section ueber-uns
+// section dienstleistungen
 
-$('#dienstleistungen .content .mycontainer').css('display', 'none');
+$('#dienstleistungen .content .mycontainer').css({'display': 'none'});
 $(window).scroll(function () { 
     let windowHeight = $(window).scrollTop() + navbarHeight;
-    if (windowHeight > dienstleistungenTop * .5) {
-        $('#dienstleistungen .content .mycontainer').slideDown();
+    let dienstleistungenHeight = $('#dienstleistungen').height();
+    if (windowHeight > dienstleistungenTop - (dienstleistungenHeight * .5)) {
+        $('#dienstleistungen .content .mycontainer').slideDown(2000);
+    }
+    
+});
+
+// section referenzen
+
+$('#referenzen .content-left').css({'transform': 'translateX(-120%)', 'transition': 'all 1.5s linear'});
+$('#referenzen .content-right').css({'transform': 'translateX(120%)', 'transition': 'all 1.5s linear'});
+
+$(window).scroll(function () { 
+    let windowHeight = $(window).scrollTop() + navbarHeight;
+    let referenzenHeight = $('#referenzen').height();
+    if (windowHeight > referenzenTop - (referenzenHeight * .5)) {
+        $('#referenzen .content-left').css('transform', 'translateX(0%)');
+        $('#referenzen .content-right').css('transform', 'translateX(0%)');
     }
 });
+
+
+
+
 
 
 
