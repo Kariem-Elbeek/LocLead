@@ -1,13 +1,6 @@
 // variables
 let navbarHeight = $('#navbar').height();
 let homeHeight = $('#home').height();
-let dienstHeadingHeight = $('#dienstleistungen .section-heading').height();
-let dienstContentPartHeight = $('#dienstleistungen .content .content-part').height();
-let refnzHeadingHeight = $('#referenzen .section-heading').height();
-let refnzContentPartHeight = $('#referenzen .content .content-part').height();
-let ueberUnsTop = $('#ueber-uns').offset().top;
-let dienstTop = $('#dienstleistungen').offset().top;
-let referenzenTop = $('#referenzen').offset().top;
 
 
 
@@ -39,6 +32,7 @@ $('#ueber-uns .content-right').css({'transform': 'translateX(120%)', 'transition
 
 $(window).scroll(function () { 
     let windowHeight = $(window).scrollTop() + navbarHeight;
+    let ueberUnsTop = $('#ueber-uns').offset().top;
     let ueberUnsHeight = $('#ueber-uns').height();
     if (windowHeight > ueberUnsTop - (ueberUnsHeight * .5)) {
         $('#ueber-uns .content-left').css('transform', 'translateX(0%)');
@@ -51,8 +45,10 @@ $(window).scroll(function () {
 $('#dienstleistungen .content .content-part').css({'display': 'none'});
 $(window).scroll(function () { 
     let windowHeight = $(window).scrollTop() + navbarHeight;
-    // let dienstHeight = $('#dienstleistungen').height();
-    if (windowHeight > dienstTop - (dienstHeadingHeight + (dienstContentPartHeight * 0.5))) {
+    let dienstTop = $('#dienstleistungen').offset().top;
+    let dienstHeadingHeight = $('#dienstleistungen .section-heading').height();
+    let dienstContentPartHeight = $('#dienstleistungen .content .content-part').height();
+        if (windowHeight > dienstTop - (dienstHeadingHeight + (dienstContentPartHeight * 0.5))) {
         $('#dienstleistungen .content .content-part').slideDown(2000);
     }
     
@@ -65,8 +61,10 @@ $('#referenzen .content-right').css({'transform': 'translateX(120%)', 'transitio
 
 $(window).scroll(function () { 
     let windowHeight = $(window).scrollTop() + navbarHeight;
-    let referenzenHeight = $('#referenzen').height();
-    if (windowHeight > referenzenTop - (refnzHeadingHeight + (refnzContentPartHeight * .5))) {
+    let referenzenTop = $('#referenzen').offset().top;
+    let refnzHeadingHeight = $('#referenzen .section-heading').height();
+    let refnzContentPartHeight = $('#referenzen .content .content-part').height();
+        if (windowHeight > referenzenTop - (refnzHeadingHeight + (refnzContentPartHeight * .5))) {
         $('#referenzen .content-left').css('transform', 'translateX(0%)');
         $('#referenzen .content-right').css('transform', 'translateX(0%)');
     }
