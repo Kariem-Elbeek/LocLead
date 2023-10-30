@@ -1,8 +1,12 @@
 // variables
 let navbarHeight = $('#navbar').height();
 let homeHeight = $('#home').height();
+let dienstHeadingHeight = $('#dienstleistungen .section-heading').height();
+let dienstContentPartHeight = $('#dienstleistungen .content .content-part').height();
+let refnzHeadingHeight = $('#referenzen .section-heading').height();
+let refnzContentPartHeight = $('#referenzen .content .content-part').height();
 let ueberUnsTop = $('#ueber-uns').offset().top;
-let dienstleistungenTop = $('#dienstleistungen').offset().top;
+let dienstTop = $('#dienstleistungen').offset().top;
 let referenzenTop = $('#referenzen').offset().top;
 
 
@@ -44,12 +48,12 @@ $(window).scroll(function () {
 
 // section dienstleistungen
 
-$('#dienstleistungen .content .mycontainer').css({'display': 'none'});
+$('#dienstleistungen .content .content-part').css({'display': 'none'});
 $(window).scroll(function () { 
     let windowHeight = $(window).scrollTop() + navbarHeight;
-    let dienstleistungenHeight = $('#dienstleistungen').height();
-    if (windowHeight > dienstleistungenTop - (dienstleistungenHeight * .5)) {
-        $('#dienstleistungen .content .mycontainer').slideDown(2000);
+    // let dienstHeight = $('#dienstleistungen').height();
+    if (windowHeight > dienstTop - (dienstHeadingHeight + (dienstContentPartHeight * 0.5))) {
+        $('#dienstleistungen .content .content-part').slideDown(2000);
     }
     
 });
@@ -62,7 +66,7 @@ $('#referenzen .content-right').css({'transform': 'translateX(120%)', 'transitio
 $(window).scroll(function () { 
     let windowHeight = $(window).scrollTop() + navbarHeight;
     let referenzenHeight = $('#referenzen').height();
-    if (windowHeight > referenzenTop - (referenzenHeight * .5)) {
+    if (windowHeight > referenzenTop - (refnzHeadingHeight + (refnzContentPartHeight * .5))) {
         $('#referenzen .content-left').css('transform', 'translateX(0%)');
         $('#referenzen .content-right').css('transform', 'translateX(0%)');
     }
