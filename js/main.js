@@ -1,6 +1,12 @@
 // variables
 let navbarHeight = $('#navbar').height();
 let homeHeight = $('#home').height();
+let windowWidth = $(window).width();
+let windowHeight = $(window).height();
+let dienstTop = $('#dienstleistungen').offset().top;
+let dienstHeadingHeight = $('#dienstleistungen .section-heading').height();
+let referenzenTop = $('#referenzen').offset().top;
+let refnzHeadingHeight = $('#referenzen .section-heading').height();
 
 
 
@@ -34,11 +40,13 @@ $(window).scroll(function () {
     let windowTop = $(window).scrollTop();
     let ueberUnsTop = $('#ueber-uns').offset().top;
     let ueberUnsHeight = $('#ueber-uns').height();
-    if (windowTop > ueberUnsTop - (ueberUnsHeight * .5)) {
+    if (windowTop > ueberUnsTop - (ueberUnsHeight * .7)) {
         $('#ueber-uns .content-left').css('transform', 'translateX(0%)');
         $('#ueber-uns .content-right').css('transform', 'translateX(0%)');
     }
 });
+
+
 
 // section dienstleistungen
 
@@ -46,12 +54,20 @@ $('#dienstleistungen .content .content-part').css({'display': 'none'});
 $(window).scroll(function () { 
     let windowTop = $(window).scrollTop();
     let windowBottom = windowTop + $(window).height();
-    let dienstTop = $('#dienstleistungen').offset().top;
-    let dienstHeadingHeight = $('#dienstleistungen .section-heading').height();
         if (windowBottom > dienstTop + (dienstHeadingHeight * 1.5)) {
-        $('#dienstleistungen .content .content-part').slideDown(2000);
-    }
-    
+            if(windowWidth >= 768) {
+                $('#dienstleistungen .content .content-part').slideDown(2000);
+            }
+            else {
+                $('#dienstleistungen .content .content-part').each(function(index) {
+                    var element = $(this);
+                    setTimeout(function() {
+                        element.slideDown(1000);
+                    }, index * 1000); // Delay each animation based on the index
+                });
+            }
+        }
+        
 });
 
 // section referenzen
@@ -61,12 +77,20 @@ $('#referenzen .content-right').css({'transform': 'translateX(120%)', 'transitio
 
 $(window).scroll(function () { 
     let windowTop = $(window).scrollTop();
-    let windowBottom = windowTop + $(window).height();
-    let referenzenTop = $('#referenzen').offset().top;
-    let refnzHeadingHeight = $('#referenzen .section-heading').height();
-        if (windowBottom > referenzenTop + (refnzHeadingHeight * 1.5)) {
-        $('#referenzen .content-left').css('transform', 'translateX(0%)');
-        $('#referenzen .content-right').css('transform', 'translateX(0%)');
+    let windowBottom = windowTop + windowHeight;
+    if (windowBottom > referenzenTop + (refnzHeadingHeight * 1.5)) {
+        if (windowWidth >= 768){
+            $('#referenzen .content-left').css('transform', 'translateX(0%)');
+            $('#referenzen .content-right').css('transform', 'translateX(0%)');    
+        }
+        else {
+            $('#referenzen .content-part').each(function(index) {
+                let element = $(this);
+                setTimeout(function() {
+                element.css('transform', 'translateX(0%)');
+                }, index * 1000); // Delay each animation based on the index
+            });
+        }
     }
 });
 
