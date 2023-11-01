@@ -3,21 +3,53 @@ let navbarHeight = $('#navbar').height();
 let homeHeight = $('#home').height();
 let windowWidth = $(window).width();
 let windowHeight = $(window).height();
+let ueberUnsTop = $('#ueber-uns').offset().top;
+let ueberUnsHeight = $('#ueber-uns').height();
 let dienstTop = $('#dienstleistungen').offset().top;
 let dienstHeadingHeight = $('#dienstleistungen .section-heading').height();
 let referenzenTop = $('#referenzen').offset().top;
 let refnzHeadingHeight = $('#referenzen .section-heading').height();
 
+// pre-animation
+$('#ueber-uns .content-left').css({'transform': 'translateX(-120%)', 'transition': 'all 1.5s linear'});
+$('#ueber-uns .content-right').css({'transform': 'translateX(120%)', 'transition': 'all 1.5s linear'});
+$('#dienstleistungen .content .content-part').css({'display': 'none'});
+$('#referenzen .content-left').css({'transform': 'translateX(-120%)', 'transition': 'all 1.5s linear'});
+$('#referenzen .content-right').css({'transform': 'translateX(120%)', 'transition': 'all 1.5s linear'});
+
+// window scroll behaviour
+
+$(window).scroll(function(){
+    let windowTop = $(window).scrollTop();
+    let windowBottom = windowTop + windowHeight;
+    navbarShow();
+    if (windowWidth >= 768){
+        if (windowTop > ueberUnsTop - (ueberUnsHeight * .7)){
+            ueberUnsShowBig();
+        }
+        if (windowBottom > dienstTop + (dienstHeadingHeight * 1.5)){
+            dienstShowBig();
+        }
+        if (windowBottom > referenzenTop + (refnzHeadingHeight * 1.5)){
+            refnzShowBig();
+        }
+    }
+    else{
+        if (windowTop > ueberUnsTop - (ueberUnsHeight * .7)){
+            ueberUnsShowSmall();
+        }
+        if (windowBottom > dienstTop + (dienstHeadingHeight * 1.5)){
+            dienstShowSmall();
+        }
+        if (windowBottom > referenzenTop + (refnzHeadingHeight * 1.5)){
+            refnzShowSmall();
+        }
+    }
+});
 
 
 // navbar
 
-$(window).scroll(function(){
-    navbarShow();
-    ueberUnsShow();
-    dienstShow();
-    refnzShow();
-});
 function navbarShow (){
     let windowHeight = $(window).scrollTop();
     if (windowHeight > homeHeight - navbarHeight){
@@ -39,54 +71,38 @@ $('.nav-link').click(function () {
 
 // section ueber-uns
 
-$('#ueber-uns .content-left').css({'transform': 'translateX(-120%)', 'transition': 'all 1.5s linear'});
-$('#ueber-uns .content-right').css({'transform': 'translateX(120%)', 'transition': 'all 1.5s linear'});
-
-// $(window).scroll();
-function ueberUnsShow () { 
-    let windowTop = $(window).scrollTop();
-    let ueberUnsTop = $('#ueber-uns').offset().top;
-    let ueberUnsHeight = $('#ueber-uns').height();
-    if (windowTop > ueberUnsTop - (ueberUnsHeight * .7)) {
-        $('#ueber-uns .content-left').css('transform', 'translateX(0%)');
-        $('#ueber-uns .content-right').css('transform', 'translateX(0%)');
-    }
+function ueberUnsShowBig () {
+    $('#ueber-uns .content-left').css('transform', 'translateX(0%)');
+    $('#ueber-uns .content-right').css('transform', 'translateX(0%)');
 }
-
+function ueberUnsShowSmall () {
+    $('#ueber-uns .content-left').css('transform', 'translateX(0%)');
+    $('#ueber-uns .content-right').css('transform', 'translateX(0%)');
+}
 
 
 // section dienstleistungen
 
-$('#dienstleistungen .content .content-part').css({'display': 'none'});
-// $(window).scroll();
-function dienstShow () 
-{ 
-    let windowTop = $(window).scrollTop();
-    let windowBottom = windowTop + $(window).height();
+function dienstShowBig () 
+{
+    console.log("big width = " + windowWidth);
+    $('#dienstleistungen .content .content-part').slideDown(2000);
+    $('#dienstleistungen .section-heading h2').addClass('bg-danger');
+}
 
-    if(windowBottom > dienstTop + (dienstHeadingHeight * 1.5))
+function dienstShowSmall (){
+    console.log("small width = " + windowWidth);
+    $('#dienstleistungen .section-heading h2').addClass('bg-danger');
+    $('#dienstleistungen .content .content-part').each(function(index) 
     {
-        if (windowWidth >= 768)
-        {
-            console.log("big width = " + windowWidth);
-            $('#dienstleistungen .content .content-part').slideDown(2000);
-            $('#dienstleistungen .section-heading h2').addClass('bg-danger');
-        }
-        else
-        {
-            console.log("small width = " + windowWidth);
-            $('#dienstleistungen .section-heading h2').addClass('bg-danger');
-            $('#dienstleistungen .content .content-part').each(function(index) 
+        var element = $(this);
+        setTimeout(function() 
             {
-                var element = $(this);
-                setTimeout(function() 
-                    {
-                        element.slideDown(1000);
-                    }, index * 1000
-                ); // Delay each animation based on the index
-            });    
-        }
-    }
+                element.slideDown(1000);
+            }, index * 1000
+        ); // Delay each animation based on the index
+    });    
+}
 
     // if (windowWidth >= 768 && windowBottom > dienstTop + (dienstHeadingHeight * 1.5)) {
     //     $('#dienstleistungen .content .content-part').slideDown(2000);
@@ -99,32 +115,21 @@ function dienstShow ()
     //         }, index * 1000); // Delay each animation based on the index
     //     });
     // }
-}
+
 
 // section referenzen
 
-$('#referenzen .content-left').css({'transform': 'translateX(-120%)', 'transition': 'all 1.5s linear'});
-$('#referenzen .content-right').css({'transform': 'translateX(120%)', 'transition': 'all 1.5s linear'});
-
-// $(window).scroll();
-
-function refnzShow () { 
-    let windowTop = $(window).scrollTop();
-    let windowBottom = windowTop + windowHeight;
-    if (windowBottom > referenzenTop + (refnzHeadingHeight * 1.5)) {
-        if (windowWidth >= 768){
-            $('#referenzen .content-left').css('transform', 'translateX(0%)');
-            $('#referenzen .content-right').css('transform', 'translateX(0%)');    
-        }
-        else {
-            $('#referenzen .content-part').each(function(index) {
-                let element = $(this);
-                setTimeout(function() {
-                element.css('transform', 'translateX(0%)');
-                }, index * 1000); // Delay each animation based on the index
-            });
-        }
-    }
+function refnzShowBig () {
+    $('#referenzen .content-left').css('transform', 'translateX(0%)');
+    $('#referenzen .content-right').css('transform', 'translateX(0%)');    
 }
-
+        
+function refnzShowSmall () {
+    $('#referenzen .content-part').each(function(index) {
+        let element = $(this);
+        setTimeout(function() {
+        element.css('transform', 'translateX(0%)');
+        }, index * 1000); // Delay each animation based on the index
+    });
+}
 
