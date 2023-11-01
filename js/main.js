@@ -59,11 +59,11 @@ $(window).scroll(function () {
         console.log("big width");
         if(windowBottom > dienstTop + (dienstHeadingHeight * 1.5)){
             $('#dienstleistungen .content .content-part').slideDown(2000);
-            $('#dienstleistungen .section-heading').addClass('bg-danger');
+            $('#dienstleistungen .section-heading h2').addClass('bg-danger');
         }
     }
     else{
-        if(windowBottom > dienstTop + dienstHeadingHeight){
+        if(windowBottom > dienstTop){
             $('#dienstleistungen .content .content-part').each(function(index) {
             var element = $(this);
             setTimeout(function() {
