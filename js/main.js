@@ -59,6 +59,7 @@ $(window).scroll(function () {
         console.log("big width");
         if(windowBottom > dienstTop + (dienstHeadingHeight * 1.5)){
             $('#dienstleistungen .content .content-part').slideDown(2000);
+            $('#dienstleistungen .section-heading').addClass('bg-danger');
         }
     }
     else{
