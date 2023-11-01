@@ -64,13 +64,14 @@ $(window).scroll(function () {
     }
     else{
         if(windowBottom > dienstTop){
+            $('#dienstleistungen .section-heading h2').addClass('bg-danger');
             $('#dienstleistungen .content .content-part').each(function(index) {
             var element = $(this);
             setTimeout(function() {
                 element.slideDown(1000);
             }, index * 1000); // Delay each animation based on the index
         });    
-        }
+    }
     }
 
     // if (windowWidth >= 768 && windowBottom > dienstTop + (dienstHeadingHeight * 1.5)) {
