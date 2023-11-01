@@ -68,17 +68,18 @@ img{
 }
 
 /* table temp */
-.position-fixed{
+/* .position-fixed{
     z-index: 99999;
 }
 td, th{
     font-size: 20px;
     font-weight: 500;
     color: blue;
-}
+} 
+
 table{
     background-color: bisque;
-}
+} */
 
 /* home */
 
