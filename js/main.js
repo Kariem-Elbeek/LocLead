@@ -54,17 +54,35 @@ $('#dienstleistungen .content .content-part').css({'display': 'none'});
 $(window).scroll(function () { 
     let windowTop = $(window).scrollTop();
     let windowBottom = windowTop + $(window).height();
-    if (windowWidth >= 768 && windowBottom > dienstTop + (dienstHeadingHeight * 1.5)) {
-        $('#dienstleistungen .content .content-part').slideDown(2000);
+
+    if (windowWidth >= 768){
+        console.log("big width");
+        if(windowBottom > dienstTop + (dienstHeadingHeight * 1.5)){
+            $('#dienstleistungen .content .content-part').slideDown(2000);
+        }
     }
-    else if (windowWidth < 768 && windowBottom > dienstTop + dienstHeadingHeight) {
-        $('#dienstleistungen .content .content-part').each(function(index) {
+    else{
+        if(windowBottom > dienstTop + dienstHeadingHeight){
+            $('#dienstleistungen .content .content-part').each(function(index) {
             var element = $(this);
             setTimeout(function() {
                 element.slideDown(1000);
             }, index * 1000); // Delay each animation based on the index
-        });
+        });    
+        }
     }
+
+    // if (windowWidth >= 768 && windowBottom > dienstTop + (dienstHeadingHeight * 1.5)) {
+    //     $('#dienstleistungen .content .content-part').slideDown(2000);
+    // }
+    // else if (windowWidth < 768 && windowBottom > dienstTop + dienstHeadingHeight) {
+    //     $('#dienstleistungen .content .content-part').each(function(index) {
+    //         var element = $(this);
+    //         setTimeout(function() {
+    //             element.slideDown(1000);
+    //         }, index * 1000); // Delay each animation based on the index
+    //     });
+    // }
 });
 
 // section referenzen
