@@ -38,10 +38,10 @@ $(window).scroll(function(){
         if (windowTop > ueberUnsTop - (ueberUnsHeight * .7)){
             ueberUnsShowSmall();
         }
-        if (windowBottom > dienstTop + (dienstHeadingHeight * 1.5)){
+        if (windowBottom > dienstTop){
             dienstShowSmall();
         }
-        if (windowBottom > referenzenTop + (refnzHeadingHeight * 1.5)){
+        if (windowBottom > referenzenTop){
             refnzShowSmall();
         }
     }
