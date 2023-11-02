@@ -118,12 +118,10 @@ function ueberUnsShowSmall () {
 
 function dienstShowBig () 
 {
-    console.log("big width = " + windowWidth);
     $('#dienstleistungen .content .content-part').slideDown(2000);
 }
 
 function dienstShowSmall (){
-    console.log("small width = " + windowWidth);
     $('#dienstleistungen .content .content-part').each(function(i){
         let element = $(this);
         showEachSlideDown(element, i);
