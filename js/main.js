@@ -13,12 +13,33 @@ let dienstHeadingHeight = $('#dienstleistungen .section-heading').height();
 let referenzenTop = $('#referenzen').offset().top;
 let refnzHeadingHeight = $('#referenzen .section-heading').height();
 let ueberUnsContentTop = $('#ueber-uns .content').offset().top;
-let dienstContentTop = $('#dienstleistungen .content').offset().top
-let referenzenContentTop = $('#referenzen .content').offset().top
+let dienstContentTop = $('#dienstleistungen .content').offset().top;
+let referenzenContentTop = $('#referenzen .content').offset().top;
+let fixedFrameUpperTop = $('#fixed-frame-top, #fixed-frame-left, #fixed-frame-right').offset().top;
+// let fixedFrameHeight = windowHeight - navbarHeight -17;
+let fixedFrameUpper = $('#fixed-frame-top, #fixed-frame-left, #fixed-frame-right');
+
 
 // variables for navbar
 let navId;
 let goToNavIdTop;
+
+// variables for form
+
+let submitButton = $('#submit-btn');
+
+submitButton.click(function(){
+    let formUserName = $('[name="user-name"]').val();
+    let formUserEmail = $('[name="user-email"]').val();
+    let formUserPhone = $('[name="user-phone"]').val();
+    let formUserMsg = $('[name="user-msg"]').val();
+    console.log(`${formUserName}, ${formUserEmail}, ${formUserPhone}, ${formUserMsg}`);
+})
+
+// fixed-frame height
+
+// fixedFrameUpper.css({'height' : `${fixedFrameHeight}`});
+
 
 // pre-animation
 
@@ -41,6 +62,13 @@ $(window).scroll(function(){
     windowBottom = windowTop + windowHeight;
     navbarShow();
 
+    if (windowTop + navbarHeight + 17 > fixedFrameUpperTop){
+        fixedFrameUpper.css({'position': 'fixed', 'top' : `${navbarHeight+17}px`});
+    }
+    else{
+        fixedFrameUpper.css({'position': 'absolute', 'top' : '100vh'});
+    }
+    
     if (windowWidth >= 768){
         if (windowTop > ueberUnsTop - (ueberUnsHeight * .7)){
             ueberUnsShowBig();

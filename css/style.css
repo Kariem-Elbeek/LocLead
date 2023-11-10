@@ -7,10 +7,15 @@
     font-family: 'Open Sans', sans-serif;
     font-family: 'Poppins', sans-serif;
 } */
-/* *{
+    *{
     padding: 0;
     margin: 0;
-} */
+    }
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 *{
     box-sizing: border-box;
 }
@@ -59,27 +64,13 @@ img{
     transition: all 1s;
 }
 .navbar-brand img {
-    width: 80px;
+    width: 130px;
 }
 
 .nav-link {
     font-weight: 600;
     cursor: pointer;
 }
-
-/* table temp */
-/* .position-fixed{
-    z-index: 99999;
-}
-td, th{
-    font-size: 20px;
-    font-weight: 500;
-    color: blue;
-} 
-
-table{
-    background-color: bisque;
-} */
 
 /* home */
 
@@ -94,6 +85,38 @@ height: 100vh;
     bottom: 5rem;
 }
 
+/* fixed frame */
+
+.fixed-frame{
+    position: absolute;
+    z-index: 10;
+    border: solid;
+    border-width: 10px;
+    border-color: rgba(84, 237, 242, 0.80);
+
+}
+
+#fixed-frame-top{
+    width: 100%;
+    top: 100vh;
+}
+
+#fixed-frame-bottom{
+    width: 100%;
+    top: 190vh;
+}
+
+#fixed-frame-left{
+    height: 90vh;
+    top: 100vh;
+    left: 0;
+}
+
+#fixed-frame-right{
+    height: 90vh;
+    top: 100vh;
+    right: 0;
+}
 
 /* ueber uns */
 
